@@ -63,7 +63,7 @@ useEffect(() => {
   const handleSendMessage = () => {
     if (newMessage.trim() === '') return;
 
-    const socket = io('http://localhost:9000',{
+    const socket = io('https://mern-api-lime.vercel.app/',{
             auth: {
               token: localStorage.getItem('token'),
               to: conversationId // Replace with the actual token
