@@ -45,7 +45,7 @@ const Login = () => {
         e.preventDefault();
 
         if (activeForm === 'signup')
-            fetch('https://mern-api-lime.vercel.app/allusers/register', {
+            fetch('https://mern-api-9vf7.onrender.com/allusers/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const Login = () => {
             })
         else {
 
-            fetch('https://mern-api-lime.vercel.app/allusers/login', {
+            fetch('https://mern-api-9vf7.onrender.com/allusers/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
