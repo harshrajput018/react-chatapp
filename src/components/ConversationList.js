@@ -94,7 +94,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   }, [searchQuery])
 
   const handleSendRequest = (conversationId) => {
-    fetch('https://mern-api-lime.vercel.app/friends/request',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/request',{
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
 
   const getAllUsers = ()=>{
 
-    fetch('https://mern-api-lime.vercel.app/allusers/allusers').then(res=>res.json()).then(res=>setall(res.allusers))
+    fetch('https://mern-api-9vf7.onrender.com/allusers/allusers').then(res=>res.json()).then(res=>setall(res.allusers))
 
   }
   useEffect(() => {
