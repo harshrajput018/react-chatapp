@@ -34,7 +34,7 @@ useEffect(() => {
 
         console.log('ndfhhd')
         const socket = io('https://mern-api-lime.vercel.app/',{
-            transports : ['websocket'],
+            transports: ['websocket', 'polling', 'flashsocket'],
             auth: {
               token: localStorage.getItem('token'),
               // Replace with the actual token
@@ -67,7 +67,7 @@ useEffect(() => {
     if (newMessage.trim() === '') return;
 
     const socket = io('https://mern-api-lime.vercel.app/',{
-            transports : ['websocket'],
+            transports: ['websocket', 'polling', 'flashsocket'],
             auth: {
               token: localStorage.getItem('token'),
               to: conversationId // Replace with the actual token
