@@ -45,9 +45,11 @@ useEffect(() => {
         setConversation(res.msgs);
        })
 
-       return ()=>{
-        socket.disconnect();
-       };
+       return () => {
+            if (socket.readyState === 1) { // <-- This is important
+                socket.disconnect();
+            }
+        }
         
       }, [])
    
