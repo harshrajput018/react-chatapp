@@ -14,7 +14,7 @@ const FriendsComponent = () => {
   ])
 
   const getFriends = ()=>{
-    fetch('https://mern-api-lime.vercel.app/friends/getfriends',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/getfriends',{
         headers:{
             token: localStorage.getItem('token'),
         }
@@ -27,7 +27,7 @@ const FriendsComponent = () => {
     // Add more friend requests here
   ])
   const getrequest = ()=>{
-    fetch('https://mern-api-lime.vercel.app/friends/getrequest',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/getrequest',{
         headers:{
             token: localStorage.getItem('token'),
         }
@@ -41,7 +41,7 @@ const FriendsComponent = () => {
   },[])
 
   function handleAccept(id){
-    fetch('https://mern-api-lime.vercel.app/friends/accept',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/accept',{
 
     headers:{
         token: localStorage.getItem('token'),
@@ -62,7 +62,7 @@ const FriendsComponent = () => {
   }
 
   function handleReject(id){
-    fetch('https://mern-api-lime.vercel.app/friends/reject',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/reject',{
 
     headers:{
         token: localStorage.getItem('token'),
