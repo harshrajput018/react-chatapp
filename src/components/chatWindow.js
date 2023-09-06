@@ -4,7 +4,9 @@ import '../styles/ChatWindow.css'; // Update with the correct path for CSS // Up
 
 const ChatWindow = ({ conversationId }) => {
 
-  console.log(conversationId)  
+
+
+  console.log(localStorage.getItem('username'))  
 
   const [newMessage, setNewMessage] = useState('');
   const [messages, setConversation] = useState([]);
@@ -124,7 +126,7 @@ socket.on('send',(res)=>{
   return (
     <div className="chat-window">
       <div className="chat-header">
-        {/* <h2 className="chat-title">{conversation.name}</h2> */}
+        { <h2 className="chat-title">{localStorage.getItem('username')}</h2> }
       </div>
       <div className="message-list" ref={messageListRef}>
         { messages && messages.map(message => (

@@ -134,7 +134,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
     setIsMenuOpen(!isMenuOpen);
   };
   const getFriends = ()=>{
-    fetch('https://mern-api-lime.vercel.app/friends/getfriends',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/getfriends',{
         headers:{
             token: localStorage.getItem('token'),
         }
@@ -218,6 +218,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
           onClick={() => {
             localStorage.setItem('chatWindow', 'true');
             localStorage.setItem('freinds', 'false');
+            localStorage.setItem('username',conversation.username)
 
             onConversationSelect(conversation._id);
           }}
