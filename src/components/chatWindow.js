@@ -16,7 +16,7 @@ const ChatWindow = ({ conversationId }) => {
 
 useEffect(() => {
 
-    fetch('http://localhost:9000/getchats',{
+    fetch('https://mern-api-9vf7.onrender.com/getchats',{
         headers:{
             from: localStorage.getItem('token'),
             to: conversationId
@@ -35,7 +35,7 @@ useEffect(() => {
     useEffect(() => {
 
         console.log('ndfhhd')
-        const socket = io('http://localhost:9000/',{
+        const socket = io('https://mern-api-9vf7.onrender.com/',{
             transports: ['websocket', 'polling', 'flashsocket'],
             auth: {
               token: localStorage.getItem('token'),
@@ -68,7 +68,7 @@ useEffect(() => {
   const handleSendMessage = () => {
     if (newMessage.trim() === '') return;
 
-    const socket = io('http://localhost:9000',{
+    const socket = io('https://mern-api-9vf7.onrender.com/',{
             transports: ['websocket', 'polling', 'flashsocket'],
             auth: {
               token: localStorage.getItem('token'),

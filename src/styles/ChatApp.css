@@ -14,9 +14,15 @@
         width: 100%;
         padding: 1rem 0;
     }
-    #list{
+    
+    .conversation-list-container
+    {
+        max-width: 100%;
+        width: 100%
+    }
+
+      .chat-window-container .no-conversation-message{
         display: none;
-        width: 100%;
       }
   }
 
@@ -32,7 +38,10 @@
 
 .conversation-list-container {
     flex: 1;
-    max-width: 300px;
+    @media screen and (min-width:801px) {
+        max-width: 300px;
+    }
+    
     background-color: #2c3e50;
     overflow-y: auto;
 }

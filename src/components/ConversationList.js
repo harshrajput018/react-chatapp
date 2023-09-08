@@ -36,7 +36,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   }, [searchQuery])
 
   const handleSendRequest = (conversationId) => {
-    fetch('http://localhost:9000/friends/request',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/request',{
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
     setIsMenuOpen(!isMenuOpen);
   };
   const getFriends = ()=>{
-    fetch('http://localhost:9000/friends/getfriends',{
+    fetch('https://mern-api-9vf7.onrender.com/friends/getfriends',{
         headers:{
             token: localStorage.getItem('token'),
         }
@@ -85,7 +85,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
 
   const getall = ()=>{
 
-    fetch('http://localhost:9000/allusers/allusers').then(res=>res.json()).then(res=>setall(res.allusers))
+    fetch('https://mern-api-9vf7.onrender.com/allusers/allusers').then(res=>res.json()).then(res=>setall(res.allusers))
 
   }
   useEffect(() => {
@@ -96,7 +96,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   }, [])
 
   return (
-    <div className="conversation-list">
+    <div id='list' className="conversation-list">
       <div className="search-people">
         <input
           type="text"
@@ -161,6 +161,19 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
             localStorage.setItem('chatWindow', 'true');
             localStorage.setItem('freinds', 'false');
             localStorage.setItem('username',conversation.username)
+
+           
+            let val = document.getElementById('list').style.display;
+
+            console.log(typeof(val))
+
+            if(val==='none')
+            val='block'
+            else val='none';
+
+            
+            document.getElementById('list').style.display=val;
+
 
             onConversationSelect(conversation._id);
           }}
