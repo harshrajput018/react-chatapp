@@ -11,7 +11,13 @@
     }
     #responsive-btn{
         display: block;
+        width: 100%;
+        padding: 1rem 0;
     }
+    #list{
+        display: none;
+        width: 100%;
+      }
   }
 
   @media only screen and (min-width: 801px) {
@@ -19,6 +25,9 @@
     #responsive-btn{
         display: none;
     }
+    
+        
+      
   }
 
 .conversation-list-container {

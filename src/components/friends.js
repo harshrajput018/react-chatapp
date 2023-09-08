@@ -14,7 +14,7 @@ const FriendsComponent = () => {
   ])
 
   const getFriends = ()=>{
-    fetch('https://mern-api-9vf7.onrender.com/friends/getfriends',{
+    fetch('http://localhost:9000/friends/getfriends',{
         headers:{
             token: localStorage.getItem('token'),
         }
@@ -27,7 +27,7 @@ const FriendsComponent = () => {
     // Add more friend requests here
   ])
   const getrequest = ()=>{
-    fetch('https://mern-api-9vf7.onrender.com/friends/getrequest',{
+    fetch('http://localhost:9000/friends/getrequest',{
         headers:{
             token: localStorage.getItem('token'),
         }
@@ -41,7 +41,7 @@ const FriendsComponent = () => {
   },[])
 
   function handleAccept(id){
-    fetch('https://mern-api-9vf7.onrender.com/friends/accept',{
+    fetch('http://localhost:9000/friends/accept',{
 
     headers:{
         token: localStorage.getItem('token'),
@@ -62,7 +62,7 @@ const FriendsComponent = () => {
   }
 
   function handleReject(id){
-    fetch('https://mern-api-9vf7.onrender.com/friends/reject',{
+    fetch('http://localhost:9000/friends/reject',{
 
     headers:{
         token: localStorage.getItem('token'),

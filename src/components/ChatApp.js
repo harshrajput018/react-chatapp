@@ -20,7 +20,20 @@ const ChatApp = () => {
 
       {localStorage.getItem('token') ? <div className="chat-app">
           {/* Show the Login component if not logged in */}
-          <button id='responsive-btn'>Select Chat</button>
+          <button id='responsive-btn' onClick={()=>{
+            let val = document.getElementById('list').style.display;
+
+            console.log(typeof(val))
+
+            if(val==='none')
+            val='block'
+            else val='none';
+
+            
+            document.getElementById('list').style.display=val;
+            console.log(document.getElementById('list').style.display)
+
+          }}>Select Chat</button>
           <div id='list' className="conversation-list-container">
             {isLoggedIn && (
               <ConversationList
