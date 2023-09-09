@@ -45,7 +45,7 @@ const Login = () => {
         e.preventDefault();
 
         if (activeForm === 'signup')
-            fetch('https://mern-api-9vf7.onrender.com/allusers/register', {
+            fetch('http://localhost:9000/allusers/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const Login = () => {
             })
         else {
 
-            fetch('https://mern-api-9vf7.onrender.com/allusers/login', {
+            fetch('http://localhost:9000/allusers/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

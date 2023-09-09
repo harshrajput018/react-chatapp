@@ -36,7 +36,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   }, [searchQuery])
 
   const handleSendRequest = (conversationId) => {
-    fetch('https://mern-api-9vf7.onrender.com/friends/request',{
+    fetch('http://localhost:9000/friends/request',{
       method:'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
     setIsMenuOpen(!isMenuOpen);
   };
   const getFriends = ()=>{
-    fetch('https://mern-api-9vf7.onrender.com/friends/getfriends',{
+    fetch('http://localhost:9000/friends/getfriends',{
         headers:{
             token: localStorage.getItem('token'),
         }
@@ -85,7 +85,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
 
   const getall = ()=>{
 
-    fetch('https://mern-api-9vf7.onrender.com/allusers/allusers').then(res=>res.json()).then(res=>setall(res.allusers))
+    fetch('http://localhost:9000/allusers/allusers').then(res=>res.json()).then(res=>setall(res.allusers))
 
   }
   useEffect(() => {
