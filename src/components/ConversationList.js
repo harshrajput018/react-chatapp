@@ -162,7 +162,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
             localStorage.setItem('freinds', 'false');
             localStorage.setItem('username',conversation.username)
 
-            if(window.innerWidth<='800px'){
+            if(window.innerWidth<=800){
             let val = document.getElementById('list').style.display;
 
             console.log(typeof(val))
