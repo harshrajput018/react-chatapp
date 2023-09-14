@@ -7,6 +7,7 @@ import '../styles/HomePage.css'; // Import your CSS file for styling
 const Login = () => {
 
     
+    
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -71,7 +72,7 @@ const Login = () => {
         }
 
         // Handle login or signup logic here
-        console.log('Form submitted:', formData);
+        // console.log'Form submitted:', formData);
     };
 
     const handleChange = (e) => {

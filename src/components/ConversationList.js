@@ -15,7 +15,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   const handleSearch = () => {
 
     if (searchQuery == '') {
-      console.log('ddd')
+      // console.log'ddd')
       setSearchResults([])
       return;
     }
@@ -23,14 +23,14 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
       return conversation.username.toLowerCase().includes(searchQuery.toLowerCase())
     }
     );
-    console.log('results',results);
+    // console.log'results',results);
     setSearchResults(results);
 
 
 
   };
 
-  console.log(searchResults)
+  // console.logsearchResults)
   useEffect(() => {
     handleSearch();
   }, [searchQuery])
@@ -46,8 +46,8 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
     })
   };
 
-  console.log('all',all)
-  console.log('allfriends',allfriends)
+  // console.log'all',all)
+  // console.log'allfriends',allfriends)
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -165,7 +165,7 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
             if(window.innerWidth<=800){
             let val = document.getElementById('list').style.display;
 
-            console.log(typeof(val))
+            // console.logtypeof(val))
 
             if(val==='none')
             val='block'

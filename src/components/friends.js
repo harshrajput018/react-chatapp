@@ -31,7 +31,7 @@ const FriendsComponent = () => {
         headers:{
             token: localStorage.getItem('token'),
         }
-    }).then((res)=>res.json()).then(res=>{console.log(res);setFriendRequestsData(res.users)})
+    }).then((res)=>res.json()).then(res=>{setFriendRequestsData(res.users)})
   }
   useEffect(()=>{
 

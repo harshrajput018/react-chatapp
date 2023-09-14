@@ -6,7 +6,7 @@ const ChatWindow = ({ conversationId }) => {
 
 
 
-  console.log(localStorage.getItem('username'))  
+  // console.loglocalStorage.getItem('username'))  
 
   const [newMessage, setNewMessage] = useState('');
   const [messages, setConversation] = useState([]);
@@ -34,7 +34,7 @@ useEffect(() => {
 
     useEffect(() => {
 
-        console.log('ndfhhd')
+        // console.log'ndfhhd')
         const socket = io('http://localhost:9000/',{
             transports: ['websocket', 'polling', 'flashsocket'],
             auth: {
@@ -44,7 +44,7 @@ useEffect(() => {
     
        socket.on('send',(res)=>{
 
-        console.log(res)
+        // console.logres)
         setConversation(res.msgs);
        })
 
@@ -80,7 +80,7 @@ useEffect(() => {
 
 socket.on('send',(res)=>{
 
-    console.log(res)
+    // console.logres)
     setConversation(res.msgs);
    })
         

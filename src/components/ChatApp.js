@@ -23,7 +23,7 @@ const ChatApp = () => {
           <button id='responsive-btn' onClick={()=>{
             let val = document.getElementById('list').style.display;
 
-            console.log(typeof(val))
+            // console.logtypeof(val))
 
             if(val==='none')
             val='block'
@@ -31,16 +31,16 @@ const ChatApp = () => {
 
             
             document.getElementById('list').style.display=val;
-            console.log(document.getElementById('list').style.display)
+            // console.logdocument.getElementById('list').style.display)
 
           }}>Select Chat</button>
           <div id='list' className="conversation-list-container">
-            {isLoggedIn && (
+            { 
               <ConversationList
                 selectedConversation={selectedConversation}
                 onConversationSelect={handleConversationSelect}
               />
-            )}
+            }
           </div>
           {localStorage.getItem('chatWindow')=='true' && <div className="chat-window-container">
             {isLoggedIn && selectedConversation ? (
