@@ -10,7 +10,7 @@ import Nav from './components/nav';
 function App() {
   
   return (
-    <div className="App">
+    <div  className="App">
       
       <BrowserRouter>
       {console.log('app')}

@@ -25,7 +25,7 @@ const Login = () => {
             setTimeout(() => {
                 localStorage.removeItem('logoutFlag');
                 document.getElementById('msg').style.display='none' // Trigger re-render to remove the message
-            }, 5000);
+            }, 2000);
     }, [])
 
 
@@ -52,6 +52,18 @@ const Login = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ username: formData.username, email: formData.email, password: formData.password })
+            }).then(res=>res.json()).then(res=>{
+                if(res.user)
+                {
+                    setActiveForm('login')
+                    setFormData({
+                        username: '',
+                        email: '',
+                        password: '',
+                    })
+                    localStorage.setItem('logoutFlag','true');
+                    
+                }
             })
         else {
 
@@ -85,7 +97,9 @@ const Login = () => {
 
     return (
         <div className="home-page">
-            {(localStorage.getItem('logoutFlag') == 'true') && <div id='msg' style={{
+            {(localStorage.getItem('logoutFlag') == 'true') && <div onClick={setTimeout(()=>{
+                document.getElementById('msg').style.display='none'
+            },3000)} id='msg' style={{
                 background: '#63a69f',
                 color: '#fff',
                 padding: '10px',

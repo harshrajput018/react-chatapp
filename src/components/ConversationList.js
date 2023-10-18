@@ -7,10 +7,10 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [allfriends, setallfriends] = useState([]);
-  const [all,setall] = useState([]);
+  const [allfriends, setallfriends] = useState(false);
+  const [all, setall] = useState([]);
 
-  
+
 
   const handleSearch = () => {
 
@@ -36,13 +36,13 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   }, [searchQuery])
 
   const handleSendRequest = (conversationId) => {
-    fetch('http://localhost:9000/friends/request',{
-      method:'POST',
+    fetch('http://localhost:9000/friends/request', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ token : localStorage.getItem('token'), to:conversationId })
-      
+      },
+      body: JSON.stringify({ token: localStorage.getItem('token'), to: conversationId })
+
     })
   };
 
@@ -75,17 +75,20 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const getFriends = ()=>{
-    fetch('http://localhost:9000/friends/getfriends',{
-        headers:{
-            token: localStorage.getItem('token'),
-        }
-    }).then((res)=>res.json()).then(res=>setallfriends(res.users))}
+  const getFriends = () => {
+    fetch('http://localhost:9000/friends/getfriends', {
+      headers: {
+        token: localStorage.getItem('token'),
+      }
+    }).then((res) => res.json()).then(res => { setallfriends(res.users) })
+  }
   // fetching all users for search
 
-  const getall = ()=>{
+  const getall = () => {
 
-    fetch('http://localhost:9000/allusers/allusers').then(res=>res.json()).then(res=>setall(res.allusers))
+    fetch('http://localhost:9000/allusers/allusers').then(res => res.json()).then(res => {
+      setall(res.allusers)
+    })
 
   }
   useEffect(() => {
@@ -96,98 +99,61 @@ const ConversationList = ({ selectedConversation, onConversationSelect }) => {
   }, [])
 
   return (
+
     <div id='list' className="conversation-list">
-      <div className="search-people">
-        <input
-          type="text"
-          placeholder="Search people..."
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value)
-          }}
-        />
+      {allfriends === false && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', flexDirection:'column' }}>
+        <div className="loader"></div>
+        
+      </div>}
+      {allfriends.length > 0 ?
+        <div>
 
-      </div>
 
-      {searchQuery.length > 0 && (
-        <div className="search-results">
-          <h4>Search Results</h4>
-          {searchResults.map((conversation) => (
 
-           
-            <div key={conversation._id} className="search-result">
-              
+          {allfriends.map((conversation) => (
+            <div
+              key={conversation._id}
+              className={`conversation ${selectedConversation === conversation._id ? 'active' : ''}`}
+              onClick={() => {
+                localStorage.setItem('chatWindow', 'true');
+                localStorage.setItem('freinds', 'false');
+                localStorage.setItem('username', conversation.username)
+
+                if (window.innerWidth <= 800) {
+                  let val = document.getElementById('list').style.display;
+
+                  // console.logtypeof(val))
+
+                  if (val === 'none')
+                    val = 'block'
+                  else val = 'none';
+
+
+                  document.getElementById('list').style.display = val;
+                }
+
+
+                onConversationSelect(conversation._id);
+              }}
+            >
               <div className="profile-pic">
-                <img src={'https://www.imagediamond.com/blog/wp-content/uploads/2020/06/cartoon-boy-images-4.jpg'} alt={`Profile of ${conversation.name}`} />
+                <img src='https://www.imagediamond.com/blog/wp-content/uploads/2020/06/cartoon-boy-images-4.jpg' alt={`Profile of ${conversation.name}`} />
               </div>
-              <div style={{ display: 'flex', width: '100%', justifyContent: "space-between", alignItems: 'center' }} className="search-result-info">
+              <div className="conversation-info">
                 <h4 className="name">{conversation.username}</h4>
-                <button style={{
-                  backgroundColor: 'rgb(231, 176, 176)',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  padding: '10px 20px',
-                  fontSize: '8px',
-                  cursor: 'pointer',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                  transition: 'background-color 0.3s, transform 0.3s',
-                }} id='sendreq' onClick={() => {handleSendRequest(conversation._id)
-                }} >{ allfriends.includes(conversation)?'Friend':'Send Request'}</button>
               </div>
             </div>
-          ))}
+          ))
+          }
+        </div> : <div style={{ fontFamily: 'sans-serif', fontSize: '2rem', padding: '1rem', paddingTop: '5rem' }}>
+          YOU DON'T HAVE ANY FRIENDS YET. <button onClick={() => {
+            navigate('/friends')
+          }} style={{ background: 'black', color: 'white', width: 'fit', border: 'none', padding: '1rem', fontSize: '1.25rem' }}>FIND PEOPLE</button>
         </div>
-      )}
+      }
 
-      <div className="menu-container">
-        <div className="menu-toggle" onClick={toggleMenu}>
-          <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`}>&#9776;</div>
-        </div>
-        <div id='men' onClick={()=>{
-          document.getElementById('men').style.display=document.getElementById('men').style.display=='block' ? 'none': 'block' 
-        }} className={`menu ${isMenuOpen ? 'open' : ''}`}>
-          <button onClick={handleLogout} className="menu-item">Logout</button>
-          <button onClick={handleFriends} className="menu-item">Friends</button>
-          <button onClick={handleChat} className="menu-item">Chat</button>
-        </div>
-      </div>
-
-      {allfriends.map((conversation) => (
-        <div
-          key={conversation._id}
-          className={`conversation ${selectedConversation === conversation._id ? 'active' : ''}`}
-          onClick={() => {
-            localStorage.setItem('chatWindow', 'true');
-            localStorage.setItem('freinds', 'false');
-            localStorage.setItem('username',conversation.username)
-
-            if(window.innerWidth<=800){
-            let val = document.getElementById('list').style.display;
-
-            // console.logtypeof(val))
-
-            if(val==='none')
-            val='block'
-            else val='none';
-
-            
-            document.getElementById('list').style.display=val;
-            }
-
-
-            onConversationSelect(conversation._id);
-          }}
-        >
-          <div className="profile-pic">
-            <img src='https://www.imagediamond.com/blog/wp-content/uploads/2020/06/cartoon-boy-images-4.jpg' alt={`Profile of ${conversation.name}`} />
-          </div>
-          <div className="conversation-info">
-            <h4 className="name">{conversation.username}</h4>
-          </div>
-        </div>
-      ))}
     </div>
+
   );
 };
 

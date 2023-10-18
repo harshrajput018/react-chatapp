@@ -47,7 +47,7 @@ const ChatApp = () => {
               <ChatWindow conversationId={selectedConversation} />
             ) : (
               <p className="no-conversation-message">
-                {isLoggedIn ? 'Select a conversation to start chatting.' : 'Please log in.'}
+                {isLoggedIn ? <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'70vh'}}>Select a conversation to start chatting.</div> : 'Please log in.'}
               </p>
             )}
           </div> }

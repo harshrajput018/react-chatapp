@@ -2,12 +2,12 @@
 .chat-window {
     margin-left: 0;
     flex: 2;
-    background-color: #f7f7f7;
+    
     color: #333333;
     display: flex;
     flex-direction: column;
     border-left: 1px solid #e0e0e0;
-    height: 100vh; /* Set chat window height to 100vh */
+    height: 90vh; /* Set chat window height to 100vh */
   }
   
   .chat-header {
